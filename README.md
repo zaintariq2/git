@@ -19,7 +19,10 @@ This project provides a simple implementation of some core Git operations using 
 
 This command initializes the necessary directories and files for a basic Git repository. It creates the following structure:
 
-.git/ ├── objects/ # Store Git objects (blobs, trees, commits) ├── refs/ # References for branches (e.g., HEAD, main) └── HEAD # Points to the current branch reference (default: refs/heads/main)
+.git/ 
+	├── objects/ # Store Git objects (blobs, trees, commits) 
+	├── refs/ # References for branches (e.g., HEAD, main) 
+	└── HEAD # Points to the current branch reference (default: refs/heads/main)
 
 
 When you run the `init` command, it will create the `.git` directory with the basic repository structure and write a reference to the `main` branch in the `.git/HEAD` file.
@@ -29,6 +32,7 @@ When you run the `init` command, it will create the `.git` directory with the ba
 ```bash
 $ python main.py init
 Initialized git directory
+```
 
 ### 2. **`git hash-object -w <file-path>`**
 
@@ -46,6 +50,7 @@ The object is stored in a directory structure based on the first two characters 
 $ echo "Hello, Git! This is the content of myfile.txt." > myfile.txt 
 $ python git_like.py hash-object -w myfile.txt
 e1eaf4ecb3ad905e11824c74ed6999b54d9a9b8f
+```
 
 ### 3. **`git cat-file -p <object-hash>`**
 
@@ -58,4 +63,4 @@ If the object is a text file, it will print the file content. If it's binary dat
 ```bash
 $ python git_like.py cat-file -p e1eaf4ecb3ad905e11824c74ed6999b54d9a9b8f
 Hello, Git! This is the content of myfile.txt.
-
+```
