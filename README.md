@@ -42,13 +42,13 @@ Git objects are stored in a compressed format. The object data consists of:
 - A header: `blob <file-size>\0` (Git object header format).
 - The file's content.
 
-The object is stored in a directory structure based on the first two characters of the SHA-1 hash.
+The object is stored in a directory structure based on the first two characters and remaining of the SHA-1 hash.
 
 #### Example:
 
 ```bash
 $ echo "Hello, Git! This is the content of myfile.txt." > myfile.txt 
-$ python git_like.py hash-object -w myfile.txt
+$ python main.py hash-object -w myfile.txt
 e1eaf4ecb3ad905e11824c74ed6999b54d9a9b8f
 ```
 
@@ -56,11 +56,9 @@ e1eaf4ecb3ad905e11824c74ed6999b54d9a9b8f
 
 This command retrieves the content of a Git object (typically a `blob` object) and displays it in a human-readable format.
 
-If the object is a text file, it will print the file content. If it's binary data, the function will display the object in hex format.
-
 #### Example:
 
 ```bash
-$ python git_like.py cat-file -p e1eaf4ecb3ad905e11824c74ed6999b54d9a9b8f
+$ python main.py cat-file -p e1eaf4ecb3ad905e11824c74ed6999b54d9a9b8f
 Hello, Git! This is the content of myfile.txt.
 ```
